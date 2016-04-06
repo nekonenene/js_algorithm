@@ -18,10 +18,10 @@ function algo1() {
 
 	var cards = Card.initCards();
 	console.log(cards);
-	$(".output").text(Card.displayAllCards(cards, 4));
+	$(".output").html(Card.displayAllCards(cards, 20));
 
 	cards = Card.shuffleCards(cards);
-	$(".output").append("<br><br>" + Card.displayAllCards(cards, 4));
+	$(".output").append("<br><br>" + Card.displayAllCards(cards, 20));
 }
 
 // トランプクラス
@@ -40,7 +40,11 @@ var Card = function () {
 	_createClass(Card, [{
 		key: "displayCard",
 		value: function displayCard() {
-			return "[" + this.suit + "" + this.number + "]";
+			if (this.suit === "♥" || this.suit === "♦") {
+				return "<font color=\"#d93232\">[" + this.suit + "" + this.number + "]</font>";
+			} else {
+				return "<font color=\"#222145\">[" + this.suit + "" + this.number + "]</font>";
+			}
 		}
 
 		/** Joker を除く 52 枚のカードを生成、Card配列として返す */
