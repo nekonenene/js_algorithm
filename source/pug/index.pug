@@ -25,10 +25,16 @@ html(lang="ja")
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
-		// jQuery : CDN 上になければローカルから読み込み
-		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js")
+		//-
+			jQuery : CDN 上になければローカルから読み込み
+			script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js")
+			script.
+				window.jquery || document.write('<script src="./plugins/jquery.js"><\/script>')
+		// Zepto : CDN 上になければローカルから読み込み
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js")
 		script.
-			window.jquery || document.write('<script src="./plugins/jquery.js"><\/script>')
+			window.zepto || document.write('<script src="./plugins/zepto.js"><\/script>')
+
 
 	body
 		//- Facebook API は body タグのあとに書く
@@ -44,7 +50,8 @@ html(lang="ja")
 							| にゃん
 							i(class="fa fa-flag")
 							br
-							button#inner-grow-button(type="button",  onclick="doSomething()") test
+							button#inner-grow-button(type="button",  class="test-button", onclick="doSomething()") test
+							.output 出力部
 
 			#footer
 				a(href="https://hato-neko.x0.com", target="_blank", title="ハトネコエセンター").
