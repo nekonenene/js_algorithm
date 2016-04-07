@@ -32,12 +32,16 @@ class Card
 	// カードの文字と番号を返す
 	displayCard()
 	{
+		var string = "";
 		if(this.suit === "♥" || this.suit === "♦")
 		{
-			return ("<font color=\"#d93232\">[" + this.suit + "" + this.number + "]</font>");
+			string += "<font color=\"#d93232\">";
 		}else{
-			return ("<font color=\"#222145\">[" + this.suit + "" + this.number + "]</font>");
+			string += "<font color=\"#222145\">";
 		}
+		string += ("[" + this.suit + "" + this.number + "]</font>");
+		
+		return string;
 	}
 
 	/** Joker を除く 52 枚のカードを生成、Card配列として返す */
