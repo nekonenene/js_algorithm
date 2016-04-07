@@ -6,13 +6,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 $(function () {
 	var list = new LinkedList();
-	list.add(3);
-	list.add(8);
-	list.add(7);
-	list.add(5);
+	list.addLastNode(3);
+	list.addLastNode(8);
+	list.addLastNode(7);
+	list.addLastNode(5);
 
 	$(".output").append(list.toString() + "<br><br>");
+
+	/* STUDY! 先頭に要素を足すことに関しては、配列より連結リストのほうが速い */
+	var TRY_TIMES = 500; // 試行回数
+
+	console.time("array");
+	var testArray = [];
+	for (var i = 0; i < TRY_TIMES; ++i) {
+		testArray = [Math.random()].concat(testArray);
+	}
+	console.timeEnd("array"); // 303.74ms : 1万回にて
+
+	console.time("linked_list");
+	var linkedList = new LinkedList();
+	for (var i = 0; i < TRY_TIMES; ++i) {
+		linkedList.addFirstNode(Math.random());
+	}
+	console.timeEnd("linked_list"); // 2.51ms : 1万回にて
 });
+
+/* Nodeクラス : 連結リストのための各ノードを示す */
 
 var Node = function Node(_value) {
 	var _nextNode = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
@@ -23,6 +42,9 @@ var Node = function Node(_value) {
 	this.nextNode = _nextNode;
 };
 
+/* 連結リストに関するクラス */
+
+
 var LinkedList = function () {
 	function LinkedList() {
 		var _firstNode = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
@@ -32,12 +54,12 @@ var LinkedList = function () {
 		this.firstNode = _firstNode;
 	}
 
-	// 一番最後のノードに新たなノードを足し、そこへリンクさせる
+	/* 一番最後のノードに新たなノードを足し、そこへリンクさせる */
 
 
 	_createClass(LinkedList, [{
-		key: "add",
-		value: function add(_value) {
+		key: "addLastNode",
+		value: function addLastNode(_value) {
 			var node = new Node(_value);
 
 			if (this.firstNode === null) {
@@ -48,8 +70,16 @@ var LinkedList = function () {
 			var lastNode = this.getLastNode();
 			lastNode.nextNode = node;
 		}
+	}, {
+		key: "addFirstNode",
+		value: function addFirstNode(_value) {
+			var node = new Node(_value);
 
-		// 最初のノードからリンクをたどり、最後のノードを出力する
+			node.nextNode = this.firstNode;
+			this.firstNode = node;
+		}
+
+		/* 最初のノードからリンクをたどり、最後のノードを出力する */
 
 	}, {
 		key: "getLastNode",
