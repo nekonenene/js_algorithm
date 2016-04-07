@@ -7,8 +7,10 @@ $(function()
 	queue.enqueue(8);
 	queue.enqueue(7);
 	queue.enqueue(5);
+	outputElement.append("配列の長さ : " + queue.length + "  <<< " + queue.elements.toString() + "<br>");
 	outputElement.append("1回目のdequeue = " + queue.dequeue() + "<br>");
 	outputElement.append("2回目のdequeue = " + queue.dequeue() + "<br>");
+	outputElement.append("配列の長さ : " + queue.length + "  <<< " + queue.elements.toString() + "<br><br>");
 });
 
 class Queue
@@ -36,7 +38,7 @@ class Queue
 			this.elements[i] = this.elements[i+1];
 		}
 
-		delete this.elements[this.length];
+		delete this.elements[this.length - 1];
 		--this.length;
 
 		return value;

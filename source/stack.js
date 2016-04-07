@@ -5,52 +5,47 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 $(function () {
-	var queue = new Queue();
+	var stack = new Stack();
 	var outputElement = $(".output");
 
-	queue.enqueue(3);
-	queue.enqueue(8);
-	queue.enqueue(7);
-	queue.enqueue(5);
-	outputElement.append("配列の長さ : " + queue.length + "  <<< " + queue.elements.toString() + "<br>");
-	outputElement.append("1回目のdequeue = " + queue.dequeue() + "<br>");
-	outputElement.append("2回目のdequeue = " + queue.dequeue() + "<br>");
-	outputElement.append("配列の長さ : " + queue.length + "  <<< " + queue.elements.toString() + "<br><br>");
+	stack.push(3);
+	stack.push(8);
+	stack.push(7);
+	stack.push(5);
+	outputElement.append("配列の長さ : " + stack.length + "  <<< " + stack.elements.toString() + "<br>");
+	outputElement.append("1回目のdestack = " + stack.pop() + "<br>");
+	outputElement.append("2回目のdestack = " + stack.pop() + "<br>");
+	outputElement.append("配列の長さ : " + stack.length + "  <<< " + stack.elements.toString() + "<br><br>");
 });
 
-var Queue = function () {
-	function Queue() {
+var Stack = function () {
+	function Stack() {
 		var _elements = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
 
 		var _length = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
-		_classCallCheck(this, Queue);
+		_classCallCheck(this, Stack);
 
 		this.elements = _elements.concat();
 		this.length = _length;
 	}
 
-	// エンキュー : stack push と同じ
+	// 後方に加える
 
 
-	_createClass(Queue, [{
-		key: "enqueue",
-		value: function enqueue(_value) {
+	_createClass(Stack, [{
+		key: "push",
+		value: function push(_value) {
 			this.elements[this.length] = _value;
 			++this.length;
 		}
 
-		// デキュー : 先頭の値を取り出す
+		// 後方の値を取り出す
 
 	}, {
-		key: "dequeue",
-		value: function dequeue() {
-			var value = this.elements[0];
-
-			for (var i = 0; i < this.length - 1; ++i) {
-				this.elements[i] = this.elements[i + 1];
-			}
-
+		key: "pop",
+		value: function pop() {
+			var value = this.elements[this.length - 1];
 			delete this.elements[this.length - 1];
 			--this.length;
 
@@ -58,5 +53,5 @@ var Queue = function () {
 		}
 	}]);
 
-	return Queue;
+	return Stack;
 }();
