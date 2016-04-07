@@ -7,7 +7,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 $(function () {
 	// jqBasicTest();
 	// jqHandlerTest();
-	algo1();
+	// algo1();
+	algo2();
 });
 
 // １：順次処理
@@ -15,13 +16,16 @@ function algo1() {
 	var x = 10;
 	var y = x + 5;
 	$(".output").text("y = " + y);
+}
 
+// ２：ソートを学ぶための下準備
+function algo2() {
 	var cards = Card.initCards();
 	console.log(cards);
 	$(".output").html(Card.displayAllCards(cards, 20));
 
-	cards = Card.shuffleCards(cards);
-	$(".output").append("<br><br>" + Card.displayAllCards(cards, 20));
+	var shuffledCards = Card.shuffleCards(cards);
+	$(".output").append("<br><br>" + Card.displayAllCards(shuffledCards, 20));
 }
 
 // トランプクラス

@@ -7,7 +7,7 @@
 
 以下のようにコマンド
 ```
-git clone git@github.com:nekonenene/Square_grows_up.git
+git clone git@github.com:nekonenene/js_algorithm.git
 ```
 
 ### 2. Node.js をインストール
