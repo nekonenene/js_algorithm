@@ -32,7 +32,7 @@ class GreatestCommonDivisor
 	displayGcd()
 	{
 		var gcd = GreatestCommonDivisor.euclid(this.a, this.b);
-		console.log( GreatestCommonDivisor.euclid(this.a, this.b) );
+		console.log( gcd );
 
 		var string = this.a + " と " + this.b + " の最大公約数は " + gcd;
 		return string;
