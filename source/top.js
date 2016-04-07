@@ -5,10 +5,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 $(function () {
+	$(".output").text("");
 	// jqBasicTest();
 	// jqHandlerTest();
 	// algo1();
-	algo2();
+	// algo2();
 });
 
 // １：順次処理
@@ -22,10 +23,10 @@ function algo1() {
 function algo2() {
 	var cards = Card.initCards();
 	console.log(cards);
-	$(".output").html(Card.displayAllCards(cards, 20));
+	$(".output").html(Card.displayAllCards(cards, 20) + "<br><br>");
 
 	var shuffledCards = Card.shuffleCards(cards);
-	$(".output").append("<br><br>" + Card.displayAllCards(shuffledCards, 20));
+	$(".output").append(Card.displayAllCards(shuffledCards, 20) + "<br><br>");
 }
 
 // トランプクラス
